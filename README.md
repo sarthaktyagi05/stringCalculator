@@ -1,12 +1,38 @@
-# React + Vite
+# String Calculator – TDD Kata in React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a complete implementation of the classic **String Calculator** using JavaScript with React and Vite. The solution follows the principles of **Test-Driven Development (TDD)**, with well-documented, incremental changes and corresponding test cases.
 
-Currently, two official plugins are available:
+It includes:
+- A robust `add()` function that handles all the edge cases described in the kata
+- A user-friendly UI built with React to allow manual input and result display
+- A complete Jest test suite covering all known edge cases
+- GitHub Pages deployment for live demonstration 
+- live demo-https://sarthaktyagi05.github.io/stringCalculator/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Problem Overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The calculator takes a string of numbers and returns their sum. It supports the following:
+
+1. **Default Delimiters**: Comma `,` and newline `\n`
+2. **Custom Delimiters**:  
+   - Single character: `//;\n1;2`
+   - Multiple delimiters: `//[*][%]\n1*2%3`
+   - Multi-character delimiters: `//[***]\n1***2***3`
+3. **Quoted Inputs**: Handles inputs like `"//;\n1;2","5"` as separate calls and sums them
+4. **Ignores Numbers > 1000**: These are skipped from sum
+5. **Negative Numbers**: Throws an error listing all negative values
+6. **Call Count**: Tracks how many times the `add()` method is called
+
+---
+
+## Getting Started
+
+To run this project locally, follow these steps:
+
+```bash
+git clone https://github.com/sarthaktyagi05/stringCalculator.git
+cd stringCalculator
+npm install
+npm run dev
