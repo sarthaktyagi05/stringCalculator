@@ -9,15 +9,27 @@ function App() {
 
   const handleCalculate = () => {
   try {
-    const normalizedInput = input.replace(/\\n/g, '\n'); 
-    const value = add(normalizedInput);
-    setResult(value);
+    const entries = input.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/); 
+    let total = 0;
+
+    for (let raw of entries) {
+      const normalized = raw
+        .replace(/^"(.*)"$/, '$1')
+        .replace(/\\n/g, '\n')
+        .replace(/\\r/g, '\r');
+
+      total += add(normalized);
+    }
+
+    setResult(total);
     setError('');
   } catch (err) {
     setResult(null);
     setError(err.message);
   }
 };
+
+
 
   return (
     <div className="calculator-container">
