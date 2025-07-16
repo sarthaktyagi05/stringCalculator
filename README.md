@@ -1,4 +1,4 @@
-# String Calculator – TDD Kata in React
+# String Calculator – React
 
 This project is a complete implementation of the classic **String Calculator** using JavaScript with React and Vite. The solution follows the principles of **Test-Driven Development (TDD)**, with well-documented, incremental changes and corresponding test cases.
 
@@ -21,9 +21,8 @@ The calculator takes a string of numbers and returns their sum. It supports the 
    - Multiple delimiters: `//[*][%]\n1*2%3`
    - Multi-character delimiters: `//[***]\n1***2***3`
 3. **Quoted Inputs**: Handles inputs like `"//;\n1;2","5"` as separate calls and sums them
-4. **Ignores Numbers > 1000**: These are skipped from sum
-5. **Negative Numbers**: Throws an error listing all negative values
-6. **Call Count**: Tracks how many times the `add()` method is called
+4. **Negative Numbers**: Throws an error listing all negative values
+5. **Call Count**: Tracks how many times the `add()` method is called
 
 ---
 
