@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { add } from './utils/stringCalculator';
+import './App.css'; 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [input, setInput] = useState('');
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState('');
+
+  const handleCalculate = () => {
+  try {
+    const normalizedInput = input.replace(/\\n/g, '\n'); 
+    const value = add(normalizedInput);
+    setResult(value);
+    setError('');
+  } catch (err) {
+    setResult(null);
+    setError(err.message);
+  }
+};
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="calculator-container">
+      <h1>String Calculator</h1>
+<p className="author">by Sarthak Tyagi</p>
+<p>Enter numbers separated by <code>,</code> or <code>\n</code>. Example: <code>1,2\n3</code></p>
+
+
+      <input
+        type="text"
+        placeholder="Enter numbers (e.g. 1,2\n3)"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        className="input-field"
+      />
+      <button onClick={handleCalculate}>Calculate</button>
+
+      {result !== null && (
+        <div className="result">
+          Result: <strong>{result}</strong>
+        </div>
+      )}
+
+      {error && (
+        <div className="error">
+          Error: {error}
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
