@@ -25,6 +25,10 @@ describe('String Calculator – Full Spec', () => {
     expect(add('1\n2,3')).toBe(6);
   });
 
+  test('throws error listing all negative numbers', () => {
+  expect(() => add('1,2,-5,-8,9,8')).toThrow('Negatives not allowed: -5, -8');
+});
+
   test('throws error for one negative number', () => {
     expect(() => add('1,-2')).toThrow('Negatives not allowed: -2');
   });

@@ -9,19 +9,19 @@ function App() {
 
   const handleCalculate = () => {
   try {
-    const entries = input.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/); 
-    let total = 0;
+    // const entries = input.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/); 
+    // let total = 0;
 
-    for (let raw of entries) {
-      const normalized = raw
-        .replace(/^"(.*)"$/, '$1')
-        .replace(/\\n/g, '\n')
-        .replace(/\\r/g, '\r');
+    // for (let raw of entries) {
+    //   const normalized = raw
+    //     .replace(/^"(.*)"$/, '$1')
+    //     .replace(/\\n/g, '\n')
+    //     .replace(/\\r/g, '\r');
 
-      total += add(normalized);
-    }
+    //   total += add(normalized);
+    // }
 
-    setResult(total);
+    setResult(add(input));
     setError('');
   } catch (err) {
     setResult(null);
